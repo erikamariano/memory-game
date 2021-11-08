@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Righteous', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #c7cdd3;
+}
+
+.card{
+    width: 130px;
+    height: 130px;
+    position: relative;
+    
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card_front, .card_back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+    backface-visibility: hidden; /* all the divs that were transformed by the rotateY will not be displayed */
+    
+}
+
+.flip{
+    transform: rotateY(180deg);
+}
+
+.card_front{
+    background-color: #101c2c;
+    transform: rotateY(180deg); /* the card will be mirrored, then when we turn it over, it will be normal. */
+}
+
+.card_back{
+    background-color: #05c3ff;
+    font-size: 30px;
+    color:  #101c2c;
+    /* display: none; */
+}
+
+#gameOver{
+    position: absolute; /* to be over the other elements of the page */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 40px;
+    display: none; /* this will start the ganme as "none", but when the game is over, the display will change to "flex". */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0; /* to this div be on top of the cards */
+}
+
+#restart{
+    padding: 20px;
+    font-size: 20px;
+    background-color: yellow;
+    border: none;
+    border-radius: 10px;
+    margin-top: 60px;
+}
+
+#gameBoard{
+    max-width: 850px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr 1fr; /* 4 rows / 5 columns */
+    gap: 20px;
+}
